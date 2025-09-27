@@ -1,0 +1,22 @@
+
+
+$AN_CEC [0,0] =0.0 ;-90 //B=-180
+; for Z1: ± 0 µm
+$AN_CEC [0,1] =0.0;0 //B=-90
+; for Z1: + 10 µm
+$AN_CEC [0,2] =0.0 ;90 //B0
+$AN_CEC [0,3] =0.3450;180 //B90
+$AN_CEC [0,4] =0.3450 ;270 //B180
+
+$AN_CEC_INPUT_AXIS[0] =(AX5) ; base axis B1
+$AN_CEC_OUTPUT_AXIS[0] =(AX7) ; compensation axis A1
+$AN_CEC_STEP[0] = 90 ; interpolation point distance
+$AN_CEC_MIN[0] =-90.0 ; compensation starts at
+; B1 = 0 mm
+$AN_CEC_MAX[0] =270.0 ; compensation ends at Y1 = 360 mm
+$AN_CEC_DIRECTION[0] =0 ; table applies in both
+; directions of travel of Y1
+$AN_CEC_MULT_BY_TABLE[0] =0
+$AN_CEC_IS_MODULO[0] =1 ; compensation without modulo function
+M00
+M17
