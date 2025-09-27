@@ -96,7 +96,19 @@
     </message>
     <message>
       <source>66024</source>
-      <translation>Prevelika korekcija X1, maksimalna korekcija za ovaj profil: </translation>
+      <translation>Ugao B ose</translation>
+    </message>
+    <message>
+      <source>66025</source>
+      <translation>Ugao Q ose</translation>
+    </message>
+    <message>
+      <source>66026</source>
+      <translation>Greska ugla B ose</translation>
+    </message>
+    <message>
+      <source>66027</source>
+      <translation>Greska ugla Q ose</translation>
     </message>
   </context>
 </TS>

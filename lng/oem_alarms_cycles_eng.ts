@@ -78,9 +78,5 @@
       <source>65104/NCK</source>
       <translation>radijus xR mora biti veci od radijusa rolne</translation>
     </message>
-    <message>
-      <source>65105/NCK</source>
-      <translation>Prevelika korekcija X1, maksimalna korekcija za ovaj profil: </translation>
-    </message>
   </context>
 </TS>

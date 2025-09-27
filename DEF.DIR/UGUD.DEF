@@ -221,7 +221,7 @@ DEF CHAN STRING[32] NAIMENOV[5]=("Ciklus_1","Ciklus_2","Ciklus_3","Ciklus_4", "P
 DEF CHAN INT BROJ_CIK      ;Broj akTiVNooG ciKLUSa
 DEF CHAN INT STARTPARAM[5] ;
 DEF CHAN INT BRUS_BROJ[5]=(1,31,61,91,121)     ;Broj brusenja
-DEF CHAN INT lli 0 uli 3 KAMEN
+DEF CHAN INT lli 0 uli 4 KAMEN
 DEF CHAN INT aktKAM
 DEF CHAN INT OPERACIJA_BROJ
 
@@ -240,6 +240,9 @@ def chan real xmerenja=0
 def chan real ReturnDist
 def chan real DiamCorr
 def chan real PosCorr
+
+
+
 M17
 
 

@@ -60,7 +60,7 @@ if ( abs(ugao-$VA_IM[B]) > GreskaB )
      ;cekanje na kocnicu
      G4 F1
      ;ispisujemo poruku
-     Msg("$66016")
+     Msg("$66024")
      ;provera pozicije posle kocenja - ako je pomeranje veliko pokušaj ponovo
      if ( abs(ugao-$VA_IM[B]) > GreskaB )
         if (KocenjeB>0)
@@ -68,14 +68,14 @@ if ( abs(ugao-$VA_IM[B]) > GreskaB )
           G1F10B=ugao+0.2
           gotob PokusajPonovoB
         else
-          msg("$66017")
+          msg("$66027")
           m00
           m96
           stopre
       endif
     endif
     ;poruka da je sve ok
-    msg( "$66018 " << (ugao-$VA_IM[B]) )
+    msg( "$66024 " << (ugao-$VA_IM[B]) )
   Endif
 Endif
 
@@ -90,7 +90,7 @@ if ( abs(Qugao-$VA_IM[Q]) > GreskaQ )
      ;cekanje na kocnicu
      G4 F1
      ;ispisujemo poruku
-     Msg("$66016")
+     Msg("$66025")
      ;provera pozicije posle kocenja - ako je pomeranje veliko pokušaj ponovo
      if ( abs(Qugao-$VA_IM[Q]) > GreskaQ )
        if (KocenjeQ>0)
@@ -98,22 +98,22 @@ if ( abs(Qugao-$VA_IM[Q]) > GreskaQ )
           G1F10Q=QUgao+0.2
           gotob PokusajPonovoQ
        else
-          msg("$66017")
+          msg("$66026")
           m00
           m96
           stopre
        endif
      endif
     ;poruka da je sve ok
-    msg( "$66018 " << (ugao-$VA_IM[Q]) )
+    msg( "$66025 " << (ugao-$VA_IM[Q]) )
   Endif
 Endif
 
 G0 G53 U=UPoz
 stopre
-
-;Kamen=BrVret
-R99=BrVret
+ msg("")
+Kamen=BrVret
+;R99=BrVret
 STOPRE
 M27
 
