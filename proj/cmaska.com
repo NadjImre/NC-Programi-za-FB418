@@ -436,13 +436,13 @@ END_LOAD
 //END
 
 //M{popup,W=250,H=205,X=0,Y=0}
-    DEF RETURNDIST = (R3//0/"","Return distance"///"RETURNDIST"/10,10,100/110,10,50//)
-    DEF DIAMCORR = (R3//0/"","Diametar correction"///"DIAMCORR"/10,,100/110,,50//)
-    DEF POSCORR = (R3//0/"","POSITION correction"///"POSCORR"/10,,100/110,,50//)
-    DEF PRECPEKIDA = (R5///"","Precnik prekida","X"/WR1//"$R[50]"/10,,100/110,,50//)
-    DEF POZICIJAPEKIDA = (R5///"","Pozicija prekida","Z"/WR1//"$R[51]"/10,,100/110,,50//)
-    DEF TEKST = (S///"","RESET - stop processing"////10,130,300/0,,0//)
-    DEF TEKST2 = (S///"","NC start - continue processing"////10,150,300/0,,0//)
+    DEF RETURNDIST = (R3//0/"",$89912///"RETURNDIST"/10,10,100/110,10,50//)
+    DEF DIAMCORR = (R3//0/"",$89913,"X"///"DIAMCORR"/10,,100/110,,50//)
+    DEF POSCORR = (R3//0/"",$89914,"Z"///"POSCORR"/10,,100/110,,50//)
+    DEF PRECPEKIDA = (R5///"",$89915,"X"/WR1//"$R[50]"/10,,100/110,,50//)
+    DEF POZICIJAPEKIDA = (R5///"",$89816,"Z"/WR1//"$R[51]"/10,,100/110,,50//)
+    DEF TEKST = (S///"",$89917////10,130,300/0,,0//)
+    DEF TEKST2 = (S///"",$89918////10,150,300/0,,0//)
 
 
     ;DEF BUTTONACCEPT = (W///,"slesstdcw.SlEsTouchButton"/////250,110,25,25/0,0,0,0)

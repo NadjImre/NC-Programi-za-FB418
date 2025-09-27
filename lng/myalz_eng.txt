@@ -573,9 +573,6 @@
 89786 0 0 "Merenje"
 89787 0 0 "Pomaci &%nBrzine"
 
-89821 0 0 "Parking diam."
-89822 0 0 "Parking poz."
-89823 0 0 "Rebound with measure"
 
 89855 0 0 "Grinding +%nDressing"
 89857 0 0 "Grinding %n Setup"
@@ -593,6 +590,18 @@
 89909 0 0 "Three-rib"
 89910 0 0 "Kvadratni"
 89911 0 0 "Gotski"
+
+89912 0 0 "Return distance"
+89913 0 0 "Diametar correction"
+89914 0 0 "Positinon corection"
+89915 0 0 "Interrupt diameter"
+89916 0 0 "Interupt position"
+89917 0 0 "RESET - stop processing"
+89918 0 0 "NC start - continue processing"
+
+89921 0 0 "Parking diam."
+89922 0 0 "Parking poz."
+89923 0 0 "Rebound with measure"
 
 
 
