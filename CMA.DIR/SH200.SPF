@@ -1,9 +1,10 @@
 PROC SH200(INT BROJ,INT SVE, INT SMERB,REAL UNUT)
-;za FB350
-;brusenje oscilacijama spolja ili unutra sa levE strane
+;za FB419
+;brusenje oscilacijama spolja ili unutra
+
 ZV400(broj)
 ZV500(BROJ,2*UNUT,0,BROB[BROJ,3],SVE)
-SETINT(8) PRIO=1 SH602
+SETINT(8) PRIO=1 SH6201
 R2=0 R1=0 
 
 FA[Z]=BRZO[broj,3] FA[X]=BRZU[broj,3]
@@ -21,6 +22,8 @@ ID=5 WHENEVER $AA_DTEPW[X]==0 DO $R1=0
 ID=6 WHENEVER ($R1==0) AND ($$SA_OSCILL_IS_ACTIVE[Z]<>0) DO $AA_OVR[X]=0
 STOPRE
 
+ZV700(BROJ,SVE,SMERB,UNUT)
+
 GRUBO:
 msg("$66001"<<"-"<<komentar[broj]) ; poruka
 R2 = PRIM[BROJ,2]
@@ -30,6 +33,7 @@ OSNSC[Z]=IZBR[BROJ,2] ; broj izbrusavanja
 OST1[Z]=ZADR[broj,5]  OST2[Z]=ZADR[broj,4]  ; zadrzavanje
 STOPRE
 OSCILL[Z]=(X) POSP[X]=(XGRUBO,KORAK[BROJ,2]/2,0) ; brusenje
+x=xgrubo+2*unut*brob_n[broj,2]
 
 CISTO:
 stopre
@@ -40,8 +44,8 @@ FA[Z]=BRZO[BROJ,1] ; brzina oscilovanja
 OSNSC[Z]=IZBR[BROJ,1] ; broj izbrusavanja
 OST1[Z]=ZADR[broj,3]  OST2[Z]=ZADR[broj,2]  ; zadrzavanje
 STOPRE
-x=xgrubo+2*unut*brob_n[broj,2]
 OSCILL[Z]=(X) POSP[X]=(XCISTO,KORAK[BROJ,1]/2,0)
+x=xcisto+2*unut*brob_n[broj,1]
 
 FINO:
 stopre
@@ -52,7 +56,6 @@ FA[Z]=BRZO[BROJ,0] ; brzina oscilovanja
 OSNSC[Z]=IZBR[BROJ,0] ; broj izbrusavanja
 OST1[Z]=ZADR[broj,1]  OST2[Z]=ZADR[broj,0]  ; zadrzavanje
 STOPRE
-x=xcisto+2*unut*brob_n[broj,1]
 OSCILL[Z]=(X) POSP[X]=(XFINO,KORAK[BROJ,0]/2,0)
 
 KRAJ:

@@ -11,6 +11,7 @@ IF((BROJ<0) OR (BROJ>89))
   M17
 ENDIF
 AktivniBroj=Broj
+DiamCorr=0 PosCorr=0
 BEZBEDNIX=$AA_IM[X]
 BEZBEDNIZ=$AA_IM[Z]
 r4=0 R2=0 R5=BROJ
@@ -37,10 +38,7 @@ IF (BRUS[BROJ]==0) GOTOF KRAJ
 ;standardni odskok              
 SETINT(8) PRIO=2 SH600
 STOPRE
-;korekcija precnika i pozicije 
-CKON=KORC[BROJ]
-XKON=KORX[BROJ]/2
-ZKON=KORZ[BROJ]
+
 STOPRE
 ; *** da li je levo ili desno celo *** 
 if (BRUSSMER[BROJ] <>0 )
@@ -50,13 +48,21 @@ else
    SMERZ=1
    TRANS Z=ZKON C=CKON X=XKON
 endif
-
+R50 = sve*PREC[BROJ,0]+2*SMERX*DODB[BROJ,2]
+R51 = POZZ[BROJ,0]+SMERZ*DODB[BROJ,2]
 T=NazivToc[Broj] D=BrojIviceToc[Broj]
 ;izbor nacina brusenja
 STOPRE
 NAZPROG = "SH" << BRUS[BROJ] << "(" << BROJ << "," << SVE << "," << smerz << "," << smerx << ")"
 STOPRE
-
+PONOVO:
+;korekcija precnika i pozicije 
+CKON=KORC[BROJ]
+XKON=(KORX[BROJ]+DiamCorr)/2
+ZKON=KORZ[BROJ]+PosCorr
+TRANS Z=ZKON C=CKON X=XKON
+;reset parametra
+BioJeOdskok=0
 EXECSTRING( NAZPROG )
 
 ;kraj programa
@@ -73,6 +79,9 @@ ENDIF
 if(ODSKOK_SKROZ[BROJ]<-1)
   WAITP(Z)   
   G0 G53 x=parkprec
+  IF (BROJ_U_OSE>0) 
+     G0 G53 U=PARKUOSE
+  ENDIF
 ENDIF
 
 if(ODSKOK_SKROZ[BROJ]<-2)
@@ -90,11 +99,23 @@ ENDIF
 STOPRE
 
 CLRINT(8)
+IF ((BIOJEODSKOK==0) OR (ODSKOKBEZMERENJA==0)) GOTOF GOTOVO
 KRAJ:
+ZV800(BROJ)
+msg("MMC active")
+MMC("popupdlg,picture_on,cmaska.com,popup","N")
+stopre
+msg("")
+m00
+MMC("popupdlg,picture_off","N")
+_APPROACH_QU(appAlat, appDBroj, appUgao, appKordsis, appNacZaokreta, appXZaokret, appZaokret, appPrilazX, appPrecPrilaz, appPrilazZ, appPozPrilaz, appUPoz, appQUgao, appBrVret, appKocenje)
+
+GOTOB PONOVO
+GOTOVO:
 OPERACIJA_BROJ=OPERACIJA_BROJ+1
 M98
-;M2=5 
-M3=5
+ZV800(BROJ)
+
 M17
 
 

@@ -65,6 +65,7 @@ DEF CHAN INT FORMIROVKA=0
 DEF CHAN INT PARKIRANJE=0
 DEF CHAN REAL PARKPREC=0
 DEF CHAN REAL PARKPOZ=0
+DEF CHAN REAL PARKUOSE=0
 DEF CHAN REAL BEZBEDNIX,BEZBEDNIZ
 def chan int zadnjikamen
 
@@ -240,8 +241,6 @@ def chan real xmerenja=0
 def chan real ReturnDist
 def chan real DiamCorr
 def chan real PosCorr
-
-
 
 M17
 

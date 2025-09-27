@@ -96,7 +96,7 @@
     </message>
     <message>
       <source>66024</source>
-      <translation>Ugao B ose</translation>
+    <translation>Ugao B ose</translation>
     </message>
     <message>
       <source>66025</source>
@@ -108,7 +108,6 @@
     </message>
     <message>
       <source>66027</source>
-      <translation>Greska ugla Q ose</translation>
-    </message>
+      <translation>Greska ugla Q ose</translation>    </message>
   </context>
 </TS>

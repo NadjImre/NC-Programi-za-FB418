@@ -4,6 +4,23 @@ Def Int BrToc
 Def int KocenjeB,KocenjeQ
 Def Real GreskaB,GreskaQ
 Def Int TrebaB, TrebaQ
+
+APPAlat=alat
+APPDBroj=dbroj
+APPUgao=ugao
+APPKordsis=kordsis
+APPNacZaokreta=naczaokreta
+APPXZaokret=xzaokret
+APPZaokret=zaokret
+APPPrilazX=prilazx
+APPPrecPrilaz=precprilaz
+APPPrilazZ=prilazz
+APPPozPrilaz=pozprilaz
+APPUPoz=upoz
+APPQUgao=qugao
+APPBrVret=brvret
+appkocenje=kocenje
+
 BrToc=Gett(alat)
 
 ;isčitavanje vrednosti za kočenje
@@ -32,6 +49,8 @@ T0D0
 SETINT(8) PRIO=1 SH600
 
 STOPRE
+if ((abs(ugao-$VA_IM[B]) < GreskaB) AND ( abs(Qugao-$VA_IM[Q]) < GreskaQ )) gotof Nastavak
+
 If (NacZaokreta==0)
    G53G0X=XZaokret
 Endif
@@ -105,15 +124,17 @@ if ( abs(Qugao-$VA_IM[Q]) > GreskaQ )
        endif
      endif
     ;poruka da je sve ok
-    msg( "$66025 " << (ugao-$VA_IM[Q]) )
+    msg( "$66025 " << (Qugao-$VA_IM[Q]) )
   Endif
 Endif
 
+Nastavak:
 G0 G53 U=UPoz
 stopre
- msg("")
+
+msg("")
+R99=BrVret
 Kamen=BrVret
-;R99=BrVret
 STOPRE
 M27
 

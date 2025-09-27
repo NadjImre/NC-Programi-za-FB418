@@ -42,5 +42,23 @@ Def chan Real rekor ; korak spirale kod leđnog brušenje – ne koristi se, za 
 def chan real prhod
 def chan real prugao 
 
-
+;PARAMETRI ZA PRILAZ I ZAOKRET
+;VREDNOSTI PARAMETARA SA KOJIM JE PRILAZ ZADNJI PUT POZVAN
+DEF CHAN String[32] APPAlat
+DEF CHAN Int APPDBroj
+DEF CHAN Real APPUgao
+DEF CHAN Int APPKordsis
+DEF CHAN Int APPNacZaokreta
+DEF CHAN Real APPXZaokret
+DEF CHAN Real APPZaokret
+DEF CHAN Int APPPrilazX
+DEF CHAN Real APPPrecPrilaz
+DEF CHAN Int APPPrilazZ
+DEF CHAN Real APPPozPrilaz
+DEF CHAN Real APPUPoz
+DEF CHAN Real APPQUgao
+DEF CHAN Int APPBrVret
+DEF CHAN Int APPkocenje
+DEF CHAN INT BioJeOdskok
+DEF CHAN INT OdskokBezMerenja
 M30
