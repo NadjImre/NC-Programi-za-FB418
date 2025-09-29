@@ -12,6 +12,7 @@ IF((BROJ<0) OR (BROJ>89))
 ENDIF
 AktivniBroj=Broj
 DiamCorr=0 PosCorr=0
+ReturnDist=0
 BEZBEDNIX=$AA_IM[X]
 BEZBEDNIZ=$AA_IM[Z]
 r4=0 R2=0 R5=BROJ
@@ -50,6 +51,7 @@ else
 endif
 R50 = sve*PREC[BROJ,0]+2*SMERX*DODB[BROJ,2]
 R51 = POZZ[BROJ,0]+SMERZ*DODB[BROJ,2]
+R53 = 2*SMERX*DODB[BROJ,2]
 T=NazivToc[Broj] D=BrojIviceToc[Broj]
 ;izbor nacina brusenja
 STOPRE

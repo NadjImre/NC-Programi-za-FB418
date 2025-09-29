@@ -3,19 +3,56 @@ PROC SH400(INT BROJ,INT SVE,INT SMERB,REAL UNUT)
 ;brusenje konusa i korekcija konusa za cilindricno
 DEF INT MM,JJ
 DEF REAL DD,izbrus
+DEF REAL PREC_POVRATKA,PREOSTALI_DODATAK_X
 ;prilaz i start kamena
 ZV400(broj)
 ZV500(BROJ,2*UNUT,0,BROB[BROJ,3],SVE)
-
+;korekcija promenjljive prekidx ako je precnik 2 manji od precnika 1 kod unutrasnjeg
+;ili je precnik 1 manji od precnika2 kod spoljnog
+IF(UNUT<0)
+;ako je unutrasnje brusenje
+   if(prec[broj,0]>prec[broj,1])
+   ;ako je precnik1 veci prekid racunati na bazi precnika2
+      PREKIDX = SVE*PREC[BROJ,1]+2*UNUT*DODB[BROJ,3]
+   endif
+else
+;ako je spoljasnje brusenje
+   if(prec[broj,0]<prec[broj,1])
+   ;ako je precnik1 manji prekid racunati na bazi precnika2
+      PREKIDX = SVE*PREC[BROJ,1]+XDOD*DODB[BROJ,3]
+   endif
+endif
 STOPRE
 ;prekid
-SETINT(8) PRIO=1 SH6400
+SETINT(8) PRIO=1 SH6201
+;Dodatak na kojem je bio prekid je u r53
+;ako nije bilo prekida r53 je dodatak za grubo
+PREOSTALI_DODATAK_X = ABS(R53)
+;Odredjujemo fazu brusenja u kojom smo prekinuti i zadajemo jj
+JJ=0
+IF ((PREOSTALI_DODATAK_X>DODB[BROJ,0]) ) 
+;ako smo prekinuti u finom brusenju
+  jj=1
+ENDIF
+IF ((PREOSTALI_DODATAK_X>DODB[BROJ,1])) 
+;ako smo prekinuti u grubom brusenju
+   jj=2
+ENDIF
+PREOSTALI_DODATAK_X = PREOSTALI_DODATAK_X+returndist
+IF (PREOSTALI_DODATAK_X<DODB[BROJ,2])
+;zbog dodavanja returndist moze biti da ovo nije ispunjeno
+   PREC_POVRATKA = SVE*PREC[BROJ,0] + 2*UNUT*PREOSTALI_DODATAK_X
+ELSE
+   PREC_POVRATKA=XVAZDUH
+   PREOSTALI_DODATAK_X=DODB[BROJ,2]
+ENDIF
 ;podesavanje promenljivih
 MM=0 ; strana brusenja
-JJ=2 ; faza brusenja
-DD=DODB[broj,jj] ; dodatak brusenja
+DD=Preostali_Dodatak_X ; dodatak brusenja
+;idemo na pocetak brusenja
+G1 X=PREC_POVRATKA  F=BRZU[BROJ,3] 
 ;za pracenje
-G0 XV=DD
+G0 XV=2*UNUT*DD
 ;glavna petlja
 FAZA:
 ;broj izbrusavanja za fazu
@@ -97,7 +134,7 @@ KRAJ:
 ;brisemo poruku
 msg("")
 ;vracamo se nazad
-G01 X=PREKIDX XV=DODB[BROJ,3] F=BRZU[BROJ,3]
+G01 X=PREKIDX XV=2*UNUT*DODB[BROJ,3] F=BRZU[BROJ,3]
 ;i zavrsavamo
 m17
 
